@@ -3,7 +3,7 @@ A KBase module: ContigFilter
 This sample module contains one small method that filters contigs.
 */
 
-module ContigFilter {
+module ContigFilter_mlee {
     typedef structure {
         string report_name;
         string report_ref;

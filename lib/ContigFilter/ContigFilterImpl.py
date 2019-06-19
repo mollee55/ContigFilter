@@ -15,10 +15,10 @@ from installed_clients.KBaseReportClient import KBaseReport
 class ContigFilter:
     '''
     Module Name:
-    ContigFilter
+    ContigFilter_mlee
 
     Module Description:
-    A KBase module: ContigFilter
+    A KBase module: ContigFilter_mlee
 This sample module contains one small method that filters contigs.
     '''
 
