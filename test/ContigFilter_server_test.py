@@ -103,3 +103,76 @@ class ContigFilterTest(unittest.TestCase):
                                                'assembly_input_ref': '1/fake/3',
                                                'min_length': 'ten'})
 
+    def test_run_ContigFilter_max(self):
+        ref = "79/16/1"
+        result = self.serviceImpl.run_ContigFilter_max(self.ctx, {
+            'workspace_name': self.wsName,
+            'assembly_ref': ref,
+            'min_length': 100,
+            'max_length': 1000000
+        })
+        print(result)
+        self.assertTrue(len(result[0]['filtered_assembly_ref']))
+        self.assertTrue(len(result[0]['report_name']))
+        self.assertTrue(len(result[0]['report_ref']))
+
+    def test_invalid_params(self):
+        impl = self.serviceImpl
+        ctx = self.ctx
+        ws = self.wsName
+        # Missing assembly ref
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws,
+                'min_length': 100, 'max_length': 1000000})
+        # Missing min length
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'max_length': 1000000})
+        # Min length is negative
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'min_length': -1, 'max_length': 1000000})
+        # Min length is wrong type
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'min_length': 'x', 'max_length': 1000000})
+        # Assembly ref is wrong type
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 1,
+                'min_length': 1, 'max_length': 1000000})
+        # Missing max length
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'min_length': 1})
+        # Max length is negative
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'min_length': 1, 'max_length': -1})
+        #Max length is wrong type
+        with self.assertRaises(ValueError):
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+                'min_length': 1, 'max_lenth': 'x'})
+
+    def test_run_ContigFilter_test_min(self):
+        ref = "79/16/1"
+        params = {
+            'workspace_name': self.wsName,
+            'assembly_ref': ref,
+            'min_length': 200000,
+            'max_length': 6000000
+        }
+        result = self.serviceImpl.run_ContigFilter_max(self.ctx, params)
+        self.assertEqual(result[0]['n_total'], 2)
+        self.assertEqual(result[0]['n_remaining'], 1)
+
+    def test_run_ContigFilter_test_max(self):
+        ref = "79/16/1"
+        params = {
+            'workspace_name': self.wsName,
+            'assembly_ref': ref,
+            'min_length': 100000,
+            'max_length': 4000000
+        }
+        result = self.serviceImpl.run_ContigFilter_max(self.ctx, params)
+        self.assertEqual(result[0]['n_total'], 2)
+        self.assertEqual(result[0]['n_remaining'], 1)
