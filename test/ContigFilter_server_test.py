@@ -4,9 +4,9 @@ import time
 import unittest
 from configparser import ConfigParser
 
-from ContigFilter_mlee.ContigFilter_mleeImpl import ContigFilter
+from ContigFilter_mlee.ContigFilter_mleeImpl import ContigFilter_mlee
 from ContigFilter_mlee.ContigFilter_mleeServer import MethodContext
-from ContigFilter.authclient import KBaseAuth as _KBaseAuth
+from ContigFilter_mlee.authclient import KBaseAuth as _KBaseAuth
 
 from installed_clients.AssemblyUtilClient import AssemblyUtil
 from installed_clients.WorkspaceClient import Workspace
@@ -21,7 +21,7 @@ class ContigFilterTest(unittest.TestCase):
         cls.cfg = {}
         config = ConfigParser()
         config.read(config_file)
-        for nameval in config.items('ContigFilter'):
+        for nameval in config.items('ContigFilter_mlee'):
             cls.cfg[nameval[0]] = nameval[1]
         # Getting username from Auth profile for token
         authServiceUrl = cls.cfg['auth-service-url']
@@ -33,7 +33,7 @@ class ContigFilterTest(unittest.TestCase):
         cls.ctx.update({'token': token,
                         'user_id': user_id,
                         'provenance': [
-                            {'service': 'ContigFilter',
+                            {'service': 'ContigFilter_mlee',
                              'method': 'please_never_use_it_in_production',
                              'method_params': []
                              }],

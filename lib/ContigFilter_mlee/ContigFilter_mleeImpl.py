@@ -12,7 +12,7 @@ from installed_clients.KBaseReportClient import KBaseReport
 #END_HEADER
 
 
-class ContigFilter:
+class ContigFilter_mlee:
     '''
     Module Name:
     ContigFilter_mlee
