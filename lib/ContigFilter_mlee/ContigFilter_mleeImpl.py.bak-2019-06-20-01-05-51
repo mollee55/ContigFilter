@@ -18,7 +18,7 @@ class ContigFilter_mlee:
     ContigFilter_mlee
 
     Module Description:
-    A KBase module: ContigFilter
+    A KBase module: ContigFilter_mlee
 This sample module contains one small method that filters contigs.
     '''
 
@@ -30,7 +30,7 @@ This sample module contains one small method that filters contigs.
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "https://github.com/mollee55/ContigFilter.git"
-    GIT_COMMIT_HASH = "0d13a1e1a62ee662a29ac8b87c900314e876611d"
+    GIT_COMMIT_HASH = "9ba17519d2fa3d8000ddb96103cd7cd6f328a3b9"
 
     #BEGIN_CLASS_HEADER
     # Class variables and functions can be defined in this block
