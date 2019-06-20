@@ -107,7 +107,7 @@ class ContigFilterTest(unittest.TestCase):
         ref = "79/16/1"
         result = self.serviceImpl.run_ContigFilter_max(self.ctx, {
             'workspace_name': self.wsName,
-            'assembly_ref': ref,
+            'assembly_input_ref': ref,
             'min_length': 100,
             'max_length': 1000000
         })
@@ -126,27 +126,27 @@ class ContigFilterTest(unittest.TestCase):
                 'min_length': 100, 'max_length': 1000000})
         # Missing min length
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 'x',
                 'max_length': 1000000})
         # Min length is negative
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 'x',
                 'min_length': -1, 'max_length': 1000000})
         # Min length is wrong type
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 'x',
                 'min_length': 'x', 'max_length': 1000000})
         # Assembly ref is wrong type
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 1,
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 1,
                 'min_length': 1, 'max_length': 1000000})
         # Missing max length
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 'x',
                 'min_length': 1})
         # Max length is negative
         with self.assertRaises(ValueError):
-            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_ref': 'x',
+            impl.run_ContigFilter_max(ctx, {'workspace_name': ws, 'assembly_input_ref': 'x',
                 'min_length': 1, 'max_length': -1})
         #Max length is wrong type
         with self.assertRaises(ValueError):
@@ -157,7 +157,7 @@ class ContigFilterTest(unittest.TestCase):
         ref = "79/16/1"
         params = {
             'workspace_name': self.wsName,
-            'assembly_ref': ref,
+            'assembly_input_ref': ref,
             'min_length': 200000,
             'max_length': 6000000
         }
@@ -169,7 +169,7 @@ class ContigFilterTest(unittest.TestCase):
         ref = "79/16/1"
         params = {
             'workspace_name': self.wsName,
-            'assembly_ref': ref,
+            'assembly_input_ref': ref,
             'min_length': 100000,
             'max_length': 4000000
         }

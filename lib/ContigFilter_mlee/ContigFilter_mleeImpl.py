@@ -160,7 +160,7 @@ This sample module contains one small method that filters contigs.
         # return variables are: output
         #BEGIN run_ContigFilter_max
         # Check that the parameters are valid
-        for name in ['min_length', 'max_length', 'assembly_ref', 'workspace_name']:
+        for name in ['min_length', 'max_length', 'assembly_input_ref', 'workspace_name']:
             if name not in params:
                 raise ValueError('Parameter "' + name + '" is required but missing')
         if not isinstance(params['min_length'], int) or (params['min_length'] < 0):
@@ -170,11 +170,11 @@ This sample module contains one small method that filters contigs.
         if not isinstance(params['assembly_ref'], str) or not len(params['assembly_ref']):
             raise ValueError('Pass in a valid assembly reference string')
 
-        print(params['min_length'], params['max_length'], params['assembly_ref'])
+        print(params['min_length'], params['max_length'], params['assembly_input_ref'])
         output = {}
 
         assembly_util = AssemblyUtil(self.callback_url)
-        fasta_file = assembly_util.get_assembly_as_fasta({'ref': params['assembly_ref']})
+        fasta_file = assembly_util.get_assembly_as_fasta({'ref': params['assembly_input_ref']})
         print(fasta_file)
 
         # Parse the downloaded file in FASTA format
