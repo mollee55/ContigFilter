@@ -167,7 +167,7 @@ This sample module contains one small method that filters contigs.
             raise ValueError('Min length must be a non-negative integer')
         if not isinstance(params['max_length'], int) or (params['max_length'] < 0):
             raise ValueError('Max length must be a non-negative integer')
-        if not isinstance(params['assembly_ref'], str) or not len(params['assembly_ref']):
+        if not isinstance(params['assembly_input_ref'], str) or not len(params['assembly_input_ref']):
             raise ValueError('Pass in a valid assembly reference string')
 
         print(params['min_length'], params['max_length'], params['assembly_input_ref'])
