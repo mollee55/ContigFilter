@@ -4,8 +4,8 @@ import time
 import unittest
 from configparser import ConfigParser
 
-from ContigFilter.ContigFilterImpl import ContigFilter
-from ContigFilter.ContigFilterServer import MethodContext
+from ContigFilter_mlee.ContigFilter_mleeImpl import ContigFilter
+from ContigFilter_mlee.ContigFilter_mleeServer import MethodContext
 from ContigFilter.authclient import KBaseAuth as _KBaseAuth
 
 from installed_clients.AssemblyUtilClient import AssemblyUtil
