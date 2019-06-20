@@ -1,7 +1,7 @@
-SERVICE = contigfilter
-SERVICE_CAPS = ContigFilter
-SPEC_FILE = ContigFilter.spec
-URL = https://kbase.us/services/contigfilter
+SERVICE = contigfilter_mlee
+SERVICE_CAPS = ContigFilter_mlee
+SPEC_FILE = ContigFilter_mlee.spec
+URL = https://kbase.us/services/contigfilter_mlee
 DIR = $(shell pwd)
 LIB_DIR = lib
 SCRIPTS_DIR = scripts
